@@ -18,12 +18,12 @@ def get_user(user_name):
     sql = "SELECT username,email,phone,lat,lon FROM users WHERE username=?"
     cur.execute(sql, [user_name])
     user = cur.fetchone()
-    map_link = "https://www.google.com/maps/search/?api=1&query=%s,%s" % (user[3], user[4])
     conn.close()
 
     if not user:
         return jsonify({'error': 'User does not exist'}), 404
 
+    map_link = "https://www.google.com/maps/search/?api=1&query=%s,%s" % (user[3], user[4])
     return jsonify({
         'username': user[0],
         'email': user[1],
@@ -99,12 +99,14 @@ def update_location():
     cur.execute(sql, [lat, lon, username])
     conn.commit()
     conn.close()
-
-    return jsonify({
-        'username': username,
-        'lat': lat,
-        'lon': lon
-    })
+    if cur.rowcount == 0:
+        return jsonify({'error': 'Cannot update: username does not exist'}), 400
+    else:    
+        return jsonify({
+            'username': username,
+            'lat': lat,
+            'lon': lon
+        })
 
 
 def check_name (user):
