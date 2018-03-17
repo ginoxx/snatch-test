@@ -1,36 +1,45 @@
-Test app
+Snatch Test
 
-Snatch
+# Tech
+Python, Flask, SQLite
 
 # Requirements
 [docker](https://www.docker.com/get-docker)
+[docker compose]
 
 # Usage
 Clone this repository
 ```
-git clone https://github.com/
-
+git clone https://github.com/ginoxx/snatch-test.git
+cd snatch-test
+```
 Run docker-compose
 ```
 docker-compose up --build
 ```
 
-Test localhost app in your browser by navigating to
+Test localhost app is working in browser by navigating to
 ```
 http://localhost:5000/
 ```
 
-Regist user
+# Test endpoints
+Use curl or browser REST client (I use YARC Chrome extension)
+
+Register user
 ```
-http://localhost:5000/
+curl -H "Content-Type: application/json" -X POST locahost:5000/users -d '{"username": "snatch", "email": "snatch@domain.com", "email": "1111111111"}'
 ```
 
 Update location
+Assumption: Coordinates are passed as parameter, for a given user.
+Could be changed with getting lat/long from an API or generated.
+Coordinates are in decimal degrees (London, Tower Hill)
 ```
-http://localhost:5000/
+curl -H "Content-Type: application/json" -X POST locahost:5000/location -d '{"username": "snatch", "lat": "51.510153", "lon": "-122.3316393"}'
 ```
 
 List user details
 ```
-http://localhost:5000/
+http://localhost:5000/snatch
 ```
