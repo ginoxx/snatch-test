@@ -32,14 +32,15 @@ curl -H "Content-Type: application/json" -X POST localhost:5000/users -d '{"user
 ```
 
 Update location
+
 Assumption: Coordinates are passed as parameter, for a given user.
-Could be changed with getting lat/long from an API or generated.
+
 Coordinates are in decimal degrees (London, Tower Hill)
 ```
-curl -H "Content-Type: application/json" -X POST localhost:5000/location -d '{"username": "snatch", "lat": "51.510153", "lon": "-122.3316393"}'
+curl -H "Content-Type: application/json" -X POST localhost:5000/location -d '{"username": "snatch", "lat": "51.510153", "lon": "-0.076507"}'
 ```
 
 List user details
 ```
-http://localhost:5000/snatch
+curl -H "Content-Type: application/json" -X GET localhost:5000/users/snatch
 ```
