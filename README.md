@@ -28,7 +28,7 @@ Use curl or browser REST client (I use YARC Chrome extension)
 
 Register user
 ```
-curl -H "Content-Type: application/json" -X POST localhost:5000/users -d '{"username": "snatch", "email": "snatch@domain.com", "email": "1111111111"}'
+curl -H "Content-Type: application/json" -X POST localhost:5000/users -d '{"username": "snatch", "email": "snatch@domain.com", "phone": "1111111111"}'
 ```
 
 Update location
